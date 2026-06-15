@@ -1,0 +1,19 @@
+# Datos pesados - sensores parquet (dentro de RawData)
+Dashboard 2/Datasets/RawData/series_train.parquet/
+Dashboard 2/Datasets/RawData/series_test.parquet/
+
+# Datasets de test y archivos auxiliares no usados (dentro de RawData)
+Dashboard 2/Datasets/RawData/test.csv
+Dashboard 2/Datasets/RawData/sample_submission.csv
+
+# Copias de train/test fuera de RawData (no usadas para el dashboard)
+Dashboard 2/Datasets/train.csv
+Dashboard 2/Datasets/test.csv
+
+# Dataset exploratorio no usado (adultos, fuera de alcance 0-18)
+Dashboard 2/Datasets/digital_diet_mental_health.csv
+
+# Archivos temporales de Python/Jupyter
+.ipynb_checkpoints/
+__pycache__/
+*.pyc
