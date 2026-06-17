@@ -138,13 +138,33 @@ Tras limpieza y filtrado de contenido infantil: **3.312 títulos analizados**
 
 ## 🎨 Paleta de colores
 
+La paleta de colores es compartida entre los dos dashboards para mantener coherencia visual en todo el proyecto.
+
+### Colores principales
+
 | Color | Hex | Uso |
 |---|---|---|
-| 🔵 Azul grisáceo | `#5B7C99` | Color principal, Disney+ |
-| 🔴 Rojo coral | `#E15759` | Netflix |
-| 🟢 Verde salvia | `#8FB996` | Movie |
-| 🟣 Lila suave | `#B8A4C9` | TV Show |
-| ⚫ Gris oscuro | `#3D4451` | Texto principal |
+| 🔵 Azul grisáceo | `#5B7C99` | Color principal, títulos, fondos de cabecera |
+| 🟢 Verde salvia | `#8FB996` | Indicadores positivos |
+| 🟣 Lila suave | `#B8A4C9` | Indicadores de alerta moderada |
+| 🔴 Terracota suave | `#D88C7A` | Indicadores de riesgo o negativos |
+| ⚪ Gris cálido | `#E8E4E1` | Fondos, áreas neutras, separadores |
+| ⚫ Gris oscuro azulado | `#3D4451` | Texto principal, ejes |
+
+### Escala secuencial
+Para variables de "menos a más" (ej: horas de pantalla 0-3):
+
+`#C5D9E8` → `#8FB1C7` → `#5B7C99` → `#3D5A7A`
+
+### Escala semántica
+Para niveles de severidad (sii):
+
+| Nivel | Color | Hex |
+|---|---|---|
+| 0 — Ninguno | 🟢 Verde salvia | `#8FB996` |
+| 1 — Leve | 🟣 Lila muy claro | `#D4C5E0` |
+| 2 — Moderado | 🟣 Lila suave | `#B8A4C9` |
+| 3 — Severo | 🔴 Terracota | `#D88C7A` |
 
 ---
 
