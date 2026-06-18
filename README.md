@@ -21,7 +21,7 @@ Spoiler: los resultados no son exactamente tranquilizadores.
 
 | Quién | Qué ha hecho | GitHub | Tableau Public |
 |---|---|---|---|
-| **Julia Corada Montano** | Dashboard 1 — El ecosistema digital infantil | [juliacorada](https://github.com/juliacorada) | [Dashboard 1](ENLACE_TABLEAU_JULIA_PENDIENTE) |
+| **Julia Corada Montano** | Dashboard 1 — El ecosistema digital infantil | [juliacorada](https://github.com/juliacorada) | [Dashboard 1](https://public.tableau.com/app/profile/julia.corada/viz/Dashboard1Elecosistemadigitalinfantil/Elecosistemadigitalinfantil?publish=yes) |
 | **Jezabel Sánchez Romero** | Dashboard 2 — Impacto en salud mental | [JezabelSr](https://github.com/JezabelSr) | [Dashboard 2](https://public.tableau.com/app/profile/jezabel.sanchez.romero/viz/DashboardNiosyPantallasSaludMentalyRiesgoDigital/Vistadetallada) |
 
 ---
@@ -30,27 +30,31 @@ Spoiler: los resultados no son exactamente tranquilizadores.
 
 ```
 proyecto-da-promo-69-modulo-4.1-team-1/
-│
+|
 ├── Dashboard 1/
-│   ├── Data/
-│   │   ├── dataset_limpio_dashboard1.csv
-│   │   ├── disney_plus_titles.csv
-│   │   └── netflix_titles.csv
-│   ├── EDA1.ipynb
-│   ├── ML_dashboard1.ipynb
-│   └── SQL_dashboard1.ipynb
-│
+|   ├── Data/
+|   |   ├── dataset_limpio_dashboard1.csv
+|   |   ├── disney_plus_titles.csv
+|   |   └── netflix_titles.csv
+|   ├── Dashboard 1 El ecosistema digital infantil.twbx
+|   ├── EDA1.ipynb
+|   ├── ML_dashboard1.ipynb
+|   └── SQL_dashboard1.ipynb
+|
 ├── Dashboard 2/
-│   ├── Datasets/
-│   │   ├── RawData/
-│   │   │   ├── data_dictionary.csv
-│   │   │   └── train.csv
-│   │   ├── data_dictionary.csv
-│   │   └── dataset_limpio_dashboard2.csv
-│   ├── EDA.ipynb
-│   ├── ML.ipynb
-│   └── SQL.ipynb
-│
+|   ├── Datasets/
+|   |   ├── RawData/
+|   |   |   ├── data_dictionary.csv
+|   |   |   └── train.csv
+|   |   ├── data_dictionary.csv
+|   |   ├── dataset_limpio_dashboard2.csv
+|   |   └── feature_importance.csv
+|   ├── Dashboard 1.png
+|   ├── Dashboard Niños y Pantallas Salud Mental y Riesgo Digital.twb
+|   ├── EDA.ipynb
+|   ├── ML.ipynb
+|   └── SQL.ipynb
+|
 ├── .gitignore
 └── README.md
 ```
@@ -171,11 +175,12 @@ Tras limpieza y filtrado de contenido infantil: **3.312 títulos analizados**
 ## 📊 Principales hallazgos
 
 ### Dashboard 1
-- 🚀 Netflix multiplicó por **18** su catálogo infantil entre 2015 y 2020
+- 🚀 Netflix multiplicó por **18** su catálogo infantil entre 2015 y 2020, y tiene más títulos infantiles en números absolutos (60,78%)
 - 🏰 Disney+ dedica el **90%** de su catálogo a contenido infantil vs el **23%** de Netflix
 - 🎬 Las películas dominan sobre las series en ambas plataformas (73% Disney+, 63% Netflix)
 - 🎭 El género más frecuente es *Children & Family Movies*, seguido de *Action-Adventure*
 - ⚠️ Solo el **19,4%** del contenido infantil es apto para todos los públicos sin restricciones
+- ⚠️ La clasificación más frecuente es Familiar (supervisión recomendada) — la mayoría del contenido infantil requiere acompañamiento parental
 
 ### Dashboard 2
 - 📉 El riesgo digital aumenta con la edad: el **82%** de los niños en infancia no muestra riesgo, frente al **57%** en adolescencia
