@@ -19,10 +19,10 @@ Spoiler: los resultados no son exactamente tranquilizadores.
 
 ## 👩‍💻 El equipo
 
-| Quién | Qué ha hecho |
-|---|---|
-| **Julia Corada Montano** | Dashboard 1 — El ecosistema digital infantil |
-| **[Jezabel Sánchez Romero]** | Dashboard 2 — Impacto en salud mental |
+| Quién | Qué ha hecho | GitHub | Tableau Public |
+|---|---|---|---|
+| **Julia Corada Montano** | Dashboard 1 — El ecosistema digital infantil | [juliacorada](https://github.com/juliacorada) | [Dashboard 1](ENLACE_TABLEAU_JULIA_PENDIENTE) |
+| **Jezabel Sánchez Romero** | Dashboard 2 — Impacto en salud mental | [JezabelSr](https://github.com/JezabelSr) | [Dashboard 2](https://public.tableau.com/app/profile/jezabel.sanchez.romero/viz/DashboardNiosyPantallasSaludMentalyRiesgoDigital/Vistadetallada) |
 
 ---
 
@@ -54,6 +54,51 @@ proyecto-da-promo-69-modulo-4.1-team-1/
 ├── .gitignore
 └── README.md
 ```
+
+---
+
+## ⚙️ Herramientas necesarias
+
+### Instalación de dependencias
+
+```bash
+pip install pandas numpy matplotlib seaborn scikit-learn sqlalchemy pymysql jupyter
+```
+
+### Versiones utilizadas
+
+| Herramienta | Versión |
+|---|---|
+| Python | 3.14.3 |
+| pandas | 1.5 o superior |
+| numpy | 1.23 o superior |
+| matplotlib | 3.6 o superior |
+| seaborn | 0.12 o superior |
+| scikit-learn | 1.2 o superior |
+| SQLAlchemy | 2.0 o superior |
+| pymysql | 1.0 o superior |
+| Jupyter Notebook / JupyterLab | Cualquier versión reciente |
+| Tableau Public | 2026.2.0 |
+
+### Base de datos
+
+Se requiere **MySQL** instalado en local (o acceso a un servidor MySQL) con permisos para crear bases de datos. Los notebooks crean y populan las bases de datos automáticamente — no es necesario crear nada a mano.
+
+---
+
+## 🚀 Orden de ejecución
+
+> ⚠️ Los notebooks de SQL y ML dependen del dataset limpio generado en el EDA. Ejecutar siempre en el orden indicado dentro de cada dashboard.
+
+### Dashboard 1
+1. `EDA1.ipynb` — Limpieza, exploración y generación de `dataset_limpio_dashboard1.csv`
+2. `SQL_dashboard1.ipynb` — Creación de la base de datos `dashboard1_pantallas` y consultas analíticas
+3. `ML_dashboard1.ipynb` — Entrenamiento del modelo de clasificación de contenido
+
+### Dashboard 2
+1. `EDA.ipynb` — Limpieza, exploración y generación de `dataset_limpio_dashboard2.csv`
+2. `SQL.ipynb` — Creación de la base de datos `dashboard2_pantallas` y consultas analíticas
+3. `ML.ipynb` — Entrenamiento del modelo de predicción de riesgo digital
 
 ---
 
@@ -97,18 +142,29 @@ Tras limpieza y filtrado de contenido infantil: **3.312 títulos analizados**
 - Accuracy: 52%
 - Hallazgo principal: el año de estreno es el predictor más importante (60% de importancia)
 
+---
+
 ### Dashboard 2 — Impacto en la salud mental
 
 **🐍 Python — Limpieza y EDA** (`EDA.ipynb`)
-- Análisis del dataset del Child Mind Institute con 82 variables
+- Análisis del dataset del Child Mind Institute con 82 variables originales
+- Selección de las 5 variables con mayor relevancia clínica y mejor calidad de datos
 - Imputación de nulos con mediana
-- Análisis de distribución por edad, sexo y nivel de riesgo digital (sii)
+- Creación de variables derivadas: `Horas_Pantalla_Label` (categorización del uso diario en 4 tramos), `Uso_Saludable` (variable binaria), `Sexo_Label` (etiqueta legible)
+- Dataset final: 3.872 participantes y 11 variables
 
 **🗄️ SQL — Consultas y análisis** (`SQL.ipynb`)
 - Base de datos `dashboard2_pantallas` en MySQL
+- 13 consultas analíticas con GROUP BY, CASE WHEN, subconsultas y window functions
+- Vista `vista_dashboard2` lista para conectar con Tableau
 
-**🤖 ML — Modelo de predicción de riesgo** (`ML.ipynb`)
-- Random Forest para predecir el nivel de riesgo digital (sii: 0=ninguno, 1=leve, 2=moderado, 3=severo)
+**🤖 ML — Modelo de predicción de riesgo digital** (`ML.ipynb`)
+- Random Forest Classifier (100 árboles, `class_weight='balanced'` para compensar el fuerte desbalance de clases: 71% sii=0, solo 0.8% sii=3)
+- Variable objetivo: `sii` (nivel de riesgo digital: 0=ninguno, 1=leve, 2=moderado, 3=severo)
+- Variables predictoras: edad, sexo, horas de pantalla diarias, calidad del sueño (SDS), funcionamiento general (CGAS). Se excluye `PCIAT_Total` porque `sii` se deriva directamente de ella — usarla sería hacer trampa
+- **Accuracy: 64,39%** (superior al 0% de detección en clases minoritarias que daría un modelo trivial que siempre prediga sii=0)
+- El modelo distingue bien la clase mayoritaria (sii=0: precision 0.89, recall 0.73) y detecta una parte real de los casos leves y moderados (recall 0.47 y 0.39 respectivamente). No logra identificar casos severos (sii=3) debido a la extrema escasez de ejemplos (32 de 3.872)
+- Hallazgo principal: el sueño es el predictor más importante (34%), por encima de la edad (26%), el funcionamiento general (25%), las horas de pantalla (10%) y el sexo (5%)
 
 ---
 
@@ -122,7 +178,12 @@ Tras limpieza y filtrado de contenido infantil: **3.312 títulos analizados**
 - ⚠️ Solo el **19,4%** del contenido infantil es apto para todos los públicos sin restricciones
 
 ### Dashboard 2
-- 👀 [COMPLETAR ESTA SECCION!!]
+- 📉 El riesgo digital aumenta con la edad: el **82%** de los niños en infancia no muestra riesgo, frente al **57%** en adolescencia
+- ⚠️ El **29%** de los participantes muestra algún nivel de riesgo digital (leve, moderado o severo)
+- 📱 Los niños que usan pantallas más de 3h/día tienen el **doble de puntuación** en uso problemático que los que usan menos de 1h/día
+- 😴 A más horas de pantalla, peor calidad del sueño — la relación es directa y estadísticamente significativa
+- 🌿 Solo el **12,9%** de los participantes tiene un patrón de uso saludable, porcentaje que casi desaparece en las categorías de mayor uso
+- 🤖 El modelo ML revela que **el sueño es el factor más predictivo del riesgo digital** — por encima de las propias horas de pantalla
 
 ---
 
