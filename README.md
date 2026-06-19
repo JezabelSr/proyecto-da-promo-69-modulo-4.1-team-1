@@ -21,7 +21,7 @@ Spoiler: los resultados no son exactamente tranquilizadores.
 
 | Quién | Qué ha hecho | GitHub | Tableau Public |
 |---|---|---|---|
-| **Julia Corada Montano** | Dashboard 1 — El ecosistema digital infantil | [juliacorada](https://github.com/juliacorada) | [Dashboard 1]([https://public.tableau.com/app/profile/julia.corada/viz/Dashboard1Elecosistemadigitalinfantil/Elecosistemadigitalinfantil?publish=yes) ](https://public.tableau.com/app/profile/julia.corada/viz/Dashboard1Elecosistemadigitalinfantil/Elecosistemadigitalinfantil?publish=yes)|
+| **Julia Corada Montano** | Dashboard 1 — El ecosistema digital infantil | [juliacorada](https://github.com/juliacorada) | [Dashboard 1](https://public.tableau.com/app/profile/julia.corada/viz/Dashboard1Elecosistemadigitalinfantil/Elecosistemadigitalinfantil) 
 | **Jezabel Sánchez Romero** | Dashboard 2 — Impacto en salud mental | [JezabelSr](https://github.com/JezabelSr) | [Dashboard 2](https://public.tableau.com/app/profile/jezabel.sanchez.romero/viz/DashboardNiosyPantallasSaludMentalyRiesgoDigital/Vistadetallada) |
 
 ---
